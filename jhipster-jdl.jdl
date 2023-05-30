@@ -1,0 +1,89 @@
+
+application {
+  config {
+    baseName myApp,
+    applicationType monolith,
+    packageName com.myapp,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    clientFramework angular
+  }
+  entities *
+}
+
+enum MyRule {
+	Adim,
+    User
+}
+
+entity Rule {
+	ruleName MyRule,
+    ruleDescription String,
+    creationDate Date
+}
+
+entity User {
+	firstName String,
+    lastName String,
+    email String,
+    password String,
+    profile  Profile,
+    rule Rule,
+    creationDate Date
+}
+
+entity SimpleUser {
+	folling User,
+    follower User,
+}
+
+entity Profile{
+	profilImageUrl String,
+    imageDescription String
+}
+
+entity Ingredient{
+	name String,
+    description String,
+    portions Double,
+    creationDate Date
+}
+
+entity Categorie {
+	name String,
+    description String,
+    creationDate Date
+}
+
+entity Recipe {
+	name String,
+    description String,
+    cookingTime String,
+    rate Float,
+    imageUrl String,
+    creationDate Date,
+    ingredient Ingredient,
+    categorie Categorie
+}
+
+entity Comments{
+	contenteText String,
+    date Date
+}
+
+relationship OneToOne {
+	Recipe to Categorie
+    User to Profile
+    User to Rule
+}
+
+relationship OneToMany{
+	User to Comments,
+    Comments to Recipe,
+    User to Recipe
+}
+
+relationship ManyToMany {
+  Recipe to Ingredient
+}
+    
