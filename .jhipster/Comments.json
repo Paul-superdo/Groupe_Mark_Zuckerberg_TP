@@ -1,0 +1,35 @@
+{
+  "applications": ["recipeFood"],
+  "changelogDate": "20230531100712",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "comments",
+  "fields": [
+    {
+      "fieldName": "contenteText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Comments",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "recipe",
+      "relationshipName": "recipe",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

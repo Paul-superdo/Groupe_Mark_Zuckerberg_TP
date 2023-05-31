@@ -1,12 +1,12 @@
 
 application {
   config {
-    baseName myApp,
+    baseName recipeFood,
     applicationType monolith,
-    packageName com.myapp,
+    packageName com.myrecipe,
     authenticationType jwt,
     prodDatabaseType mysql,
-    clientFramework angular
+    clientFramework react
   }
   entities *
 }
@@ -19,7 +19,7 @@ enum MyRule {
 entity Rule {
 	ruleName MyRule,
     ruleDescription String,
-    creationDate Date
+    creationDate String
 }
 
 entity User {
@@ -27,14 +27,7 @@ entity User {
     lastName String,
     email String,
     password String,
-    profile  Profile,
-    rule Rule,
-    creationDate Date
-}
-
-entity SimpleUser {
-	folling User,
-    follower User,
+    creationDate String
 }
 
 entity Profile{
@@ -46,13 +39,13 @@ entity Ingredient{
 	name String,
     description String,
     portions Double,
-    creationDate Date
+    creationDate String
 }
 
 entity Categorie {
 	name String,
     description String,
-    creationDate Date
+    creationDate String
 }
 
 entity Recipe {
@@ -61,29 +54,21 @@ entity Recipe {
     cookingTime String,
     rate Float,
     imageUrl String,
-    creationDate Date,
-    ingredient Ingredient,
-    categorie Categorie
+    creationDate String,
 }
 
 entity Comments{
 	contenteText String,
-    date Date
+    date String
 }
 
-relationship OneToOne {
-	Recipe to Categorie
-    User to Profile
-    User to Rule
-}
-
-relationship OneToMany{
-	User to Comments,
-    Comments to Recipe,
-    User to Recipe
-}
-
-relationship ManyToMany {
-  Recipe to Ingredient
+relationship ManyToOne {
+	Rule{user} to User
+    Profile{user} to User
+   	Comments{user} to User,
+	Recipe{categorie} to Categorie
+   	Recipe{ingredient} to Ingredient
+   	Comments{recipe} to Recipe,
+   	Recipe{user} to User
 }
     

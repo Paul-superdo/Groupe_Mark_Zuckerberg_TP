@@ -1,0 +1,35 @@
+{
+  "applications": ["recipeFood"],
+  "changelogDate": "20230531100212",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "rule",
+  "fields": [
+    {
+      "fieldName": "ruleName",
+      "fieldType": "MyRule",
+      "fieldValues": "Adim,User"
+    },
+    {
+      "fieldName": "ruleDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Rule",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
